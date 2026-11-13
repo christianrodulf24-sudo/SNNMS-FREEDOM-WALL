@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SNMMS Freedom Wall</title>
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#">
+    <img src="logo.jpg" alt="Sto. Niño Mactan Montessori School seal">
+    <span><b>Freedom Wall</b><small>Sto. Niño Mactan Montessori School</small></span>
+  </a>
+  <nav>
+    <a href="#compose">Write a note</a>
+    <a href="#wall">The wall</a>
+    <button id="rulesBtn" class="ghost">Wall rules</button>
+    <button id="themeBtn" class="ghost" aria-label="Toggle dark mode">🌙</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <h1>The wall<br>is yours.</h1>
+      <p>Shoutouts, questions, advice, and the things you can’t say in class. Post with a nickname or stay anonymous.</p>
+      <a class="btn" href="#compose">Pin a note</a>
+      <div class="stats">
+        <div><strong id="sPosts">0</strong>notes on<br>the wall</div>
+        <div><strong id="sReacts">0</strong>reactions<br>given</div>
+        <div><strong id="sToday">0</strong>posted<br>today</div>
+      </div>
+    </div>
+    <img class="seal" src="logo.jpg" alt="">
+  </div>
+</section>
+
+<section class="board">
+  <main>
+    <aside id="compose" class="composer pinned">
+      <h2>Pin a note</h2>
+      <form id="form" autocomplete="off">
+        <label>Nickname <input id="name" maxlength="20" placeholder="Blank = anonymous"></label>
+        <label>Your message
+          <textarea id="text" maxlength="280" rows="5" placeholder="What’s on your mind?" required></textarea>
+          <span class="count"><span id="cnt">0</span>/280</span>
+        </label>
+        <fieldset><legend>Category</legend><div class="pills" id="catPick"></div></fieldset>
+        <fieldset><legend>Paper color</legend><div class="swatches" id="colorPick"></div></fieldset>
+        <div class="preview-label">How it will look</div>
+        <div id="preview" class="note preview"><p>Your note will look like this.</p></div>
+        <button class="btn full" type="submit">Pin it up</button>
+      </form>
+    </aside>
+
+    <section id="wall" class="wallwrap">
+      <div class="tools">
+        <h2>On the wall</h2>
+        <input id="search" type="search" placeholder="Search notes" aria-label="Search notes">
+        <select id="sort" aria-label="Sort notes">
+          <option value="new">Newest first</option>
+          <option value="top">Most reactions</option>
+          <option value="old">Oldest first</option>
+        </select>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div id="wall-grid" class="wall" aria-live="polite"></div>
+      <div id="empty" class="empty" hidden>
+        <h3>Nothing pinned here yet.</h3>
+        <p>Notes you post show up on this wall. Be the first.</p>
+        <a class="btn" href="#compose">Pin the first note</a>
+      </div>
+    </section>
+  </main>
+</section>
+
+<footer>
+  <img src="logo.jpg" alt="">
+  <p>Freedom Wall of Sto. Niño Mactan Montessori School Inc. Be kind, be honest, think before you post.</p>
+</footer>
+
+<dialog id="rules">
+  <h2>Wall rules</h2>
+  <ul>
+    <li>No bullying, hate, or naming people to shame them.</li>
+    <li>No private info such as phone numbers or addresses.</li>
+    <li>Keep it school-appropriate. Strong words are hidden automatically.</li>
+    <li>Use Report on notes that cross the line.</li>
+  </ul>
+  <button class="btn" id="closeRules">Got it</button>
+</dialog>
+
+<div id="toast" role="status"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
